@@ -40,6 +40,12 @@
                     <div v-html="information.info.description" class="text-primary w-full h-48 overflow-y-auto pr-2" />
                 </div>
             </section>
+            <section class="flex md:hidden justify-center items-center w-full">
+                <NuxtLink v-if="information.episodes.episodes && information.episodes.episodes.length > 0"
+                    :to="`/e/${id}/${information.episodes.episodes[0].id}`"
+                    class="text-primary bg-secondary w-full text-center rounded-sm py-1 hover:bg-opacity-75">
+                    Watch Now</NuxtLink>
+            </section>
         </section>
         <section v-if="information.recommendations.results && information.recommendations.results.length > 0"
             class="space-y-4">
