@@ -38,7 +38,7 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:image",
-                    content: "/public/apple-touch-icon.png",
+                    content: "/apple-touch-icon.png",
                 },
                 {
                     property: "og:url",
