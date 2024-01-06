@@ -13,7 +13,7 @@
                 <div class="hidden md:flex flex-col gap-2">
                     <NuxtImg :src="information.info.coverImage.large" :alt="information.info.title.romaji"
                         :title="information.info.title.romaji" class="w-full h-72 object-cover rounded-sm" />
-                    <NuxtLink v-if="information.episodes.episodes.length > 0"
+                    <NuxtLink v-if="information.episodes.episodes && information.episodes.episodes.length > 0"
                         :to="`/e/${id}/${information.episodes.episodes[0].id}`"
                         class="text-primary bg-secondary text-center rounded-sm py-1 hover:bg-opacity-75">
                         Watch Now</NuxtLink>
@@ -27,7 +27,8 @@
                         <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.episodes ?
                             information.info.episodes : "?" }} Episodes
                         </p>
-                        <p v-if="information.info.score.averageScore" class="text-primary bg-secondary rounded-sm px-2">{{ information.info.score.averageScore }}%</p>
+                        <p v-if="information.info.score.averageScore" class="text-primary bg-secondary rounded-sm px-2">{{
+                            information.info.score.averageScore }}%</p>
                         <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.format }}</p>
                         <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.status }}</p>
                     </div>
@@ -40,7 +41,8 @@
                 </div>
             </section>
         </section>
-        <section v-if="information.recommendations.results.length > 0" class="space-y-4">
+        <section v-if="information.recommendations.results && information.recommendations.results.length > 0"
+            class="space-y-4">
             <section class="flex flex-col">
                 <h2 class="text-secondary text-xl font-semibold">Recommendations</h2>
                 <p class="text-primary text-sm">Recommended For You</p>
