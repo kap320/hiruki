@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
     modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxtjs/google-fonts", "nuxt-icon"],
-    devtools: { enabled: false },
-    tailwindcss: { viewer: false, cssPath: "./assets/css/tailwind.scss" },
+    devtools: { enabled: true },
+    tailwindcss: { viewer: false },
     googleFonts: {
         families: {
             Outfit: [400, 500, 600, 700],
