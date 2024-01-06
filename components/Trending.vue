@@ -6,7 +6,8 @@
         </section>
         <section class="grid grid-cols-2 md:grid-cols-8 gap-2">
             <NuxtLink :to="`/i/${item.id}`" class="w-full space-y-1" v-for="item in trending">
-                <NuxtImg :src="item.cover" class="w-full h-44 md:h-56 object-cover rounded-sm" />
+                <NuxtImg :src="item.cover" :alt="item.title" :title="item.title"
+                    class="w-full h-44 md:h-56 object-cover rounded-sm hover:scale-95" />
                 <h6 class="text-primary text-sm truncate">{{ item.title }}</h6>
                 <div class="flex items-center gap-1">
                     <p class="text-primary bg-secondary text-sm rounded-sm px-1.5">{{ item.type }}</p>
