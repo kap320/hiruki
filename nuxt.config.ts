@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-            title: "Hiruki",
+            title: "Hiruki - Online Anime Streaming Without Ads",
             meta: [
                 {
                     name: "description",
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:title",
-                    content: "Hiruki",
+                    content: "Hiruki - Online Anime Streaming Without Ads",
                 },
                 {
                     property: "og:description",
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:image",
-                    content: "/apple-touch-icon.png",
+                    content: "/public/apple-touch-icon.png",
                 },
                 {
                     property: "og:url",
@@ -57,6 +57,11 @@ export default defineNuxtConfig({
                 {
                     rel: "canonical",
                     href: "https://hiruki.xyz/"
+                },
+                {
+                    rel: "shortcut icon",
+                    type: "image/x-icon",
+                    href: "/public/favicon.ico"
                 }
             ]
         }

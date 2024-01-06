@@ -1,7 +1,7 @@
 <template>
     <section class="space-y-4">
         <section class="flex flex-col">
-            <h1 class="text-secondary text-xl font-semibold">Trending Now</h1>
+            <h2 class="text-secondary text-xl font-semibold">Trending Now</h2>
             <p class="text-primary text-sm">Currently Trending Anime</p>
         </section>
         <section class="grid grid-cols-2 md:grid-cols-8 gap-2">
