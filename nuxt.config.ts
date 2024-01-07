@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
     modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxtjs/google-fonts", "nuxt-icon"],
-    devtools: { enabled: true },
+    devtools: { enabled: false },
     tailwindcss: { viewer: false },
     googleFonts: {
         families: {
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
                 },
                 {
                     property: "og:image",
-                    content: "/public/apple-touch-icon.png",
+                    content: "/apple-touch-icon.png",
                 },
                 {
                     property: "og:url",
@@ -61,9 +61,12 @@ export default defineNuxtConfig({
                 {
                     rel: "shortcut icon",
                     type: "image/x-icon",
-                    href: "/public/favicon.ico"
+                    href: "/favicon.ico"
                 }
             ]
         }
+    },
+    runtimeConfig: {
+        API: process.env.API_URL
     }
 });

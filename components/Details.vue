@@ -1,53 +1,53 @@
 <template>
     <section class="space-y-4">
         <section class="space-y-4">
-            <section v-if="information.info.bannerImage" class="flex justify-center items-center">
-                <NuxtImg :src="information.info.bannerImage" :alt="information.info.title.romaji"
-                    :title="information.info.title.romaji" class="w-full h-20 md:h-40 object-cover rounded-sm opacity-75" />
+            <section v-if="info.bannerImage" class="flex justify-center items-center">
+                <NuxtImg :src="info.bannerImage" :alt="info.title.romaji"
+                    :title="info.title.romaji" class="w-full h-20 md:h-40 object-cover rounded-sm opacity-75" />
             </section>
             <section class="flex flex-col">
-                <h2 class="text-secondary text-2xl font-semibold">{{ information.info.title.romaji }}</h2>
-                <p class="text-primary">{{ information.info.title.native }}</p>
+                <h2 class="text-secondary text-2xl font-semibold">{{ info.title.romaji }}</h2>
+                <p class="text-primary">{{ info.title.native }}</p>
             </section>
             <section class="grid grid-cols-[auto,1fr] gap-4">
                 <div class="hidden md:flex flex-col gap-2">
-                    <NuxtImg :src="information.info.coverImage.large" :alt="information.info.title.romaji"
-                        :title="information.info.title.romaji" class="w-full h-72 object-cover rounded-sm" />
-                    <NuxtLink v-if="information.episodes.episodes && information.episodes.episodes.length > 0"
-                        :to="`/e/${id}/${information.episodes.episodes[0].id}`"
+                    <NuxtImg :src="info.coverImage.large" :alt="info.title.romaji"
+                        :title="info.title.romaji" class="w-full h-72 object-cover rounded-sm" />
+                     <NuxtLink v-if="episodes && episodes.length > 0"
+                        :to="`/e/${id}/${episodes[0].id}`"
                         class="text-primary bg-secondary text-center rounded-sm py-1 hover:bg-opacity-75">
                         Watch Now</NuxtLink>
                 </div>
                 <div class="flex flex-col gap-2">
                     <div class="flex items-center gap-1">
-                        <p class="text-primary">{{ information.info.season }}</p>
-                        <p class="text-primary">{{ information.info.year }}</p>
+                        <p class="text-primary">{{ info.season }}</p>
+                        <p class="text-primary">{{ info.seasonYear }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-1">
-                        <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.episodes ?
-                            information.info.episodes : "?" }} Episodes
+                        <p class="text-primary bg-secondary rounded-sm px-2">{{ info.episodes ?
+                            info.episodes : "?" }} Episodes
                         </p>
-                        <p v-if="information.info.score.averageScore" class="text-primary bg-secondary rounded-sm px-2">{{
-                            information.info.score.averageScore }}%</p>
-                        <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.format }}</p>
-                        <p class="text-primary bg-secondary rounded-sm px-2">{{ information.info.status }}</p>
+                        <p v-if="info.averageScore" class="text-primary bg-secondary rounded-sm px-2">{{
+                            info.averageScore }}%</p>
+                        <p class="text-primary bg-secondary rounded-sm px-2">{{ info.format }}</p>
+                        <p class="text-primary bg-secondary rounded-sm px-2">{{ info.status }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-1">
-                        <div v-for="(genre, index) in information.info.genres" :key="index">
+                        <div v-for="(genre, index) in info.genres" :key="index">
                             <p class="text-secondary bg-primary rounded-sm px-2">{{ genre }}</p>
                         </div>
                     </div>
-                    <div v-html="information.info.description" class="text-primary w-full h-48 overflow-y-auto pr-2" />
+                    <div v-html="info.description" class="text-primary w-full h-48 overflow-y-auto pr-2" />
                 </div>
             </section>
             <section class="flex md:hidden justify-center items-center w-full">
-                <NuxtLink v-if="information.episodes.episodes && information.episodes.episodes.length > 0"
-                    :to="`/e/${id}/${information.episodes.episodes[0].id}`"
+                <NuxtLink v-if="episodes && episodes.length > 0"
+                    :to="`/e/${id}/${episodes[0].id}`"
                     class="text-primary bg-secondary w-full text-center rounded-sm py-1 hover:bg-opacity-75">
                     Watch Now</NuxtLink>
             </section>
         </section>
-        <section v-if="information.recommendations.results && information.recommendations.results.length > 0"
+        <!-- <section v-if="information.recommendations.results && information.recommendations.results.length > 0"
             class="space-y-4">
             <section class="flex flex-col">
                 <h2 class="text-secondary text-xl font-semibold">Recommendations</h2>
@@ -65,19 +65,12 @@
                     </div>
                 </NuxtLink>
             </section>
-        </section>
+        </section> -->
     </section>
 </template>
 
 <script setup>
 const { id } = defineProps(["id"]);
-const { data: information } = await useAsyncData("information", async () => {
-    const [info, episodes, recommendations] = await Promise.all([
-        $fetch("https://api.amvstr.me/api/v2/info/" + id),
-        $fetch("https://api.amvstr.me/api/v2/episode/" + id),
-        $fetch("https://api.amvstr.me/api/v2/recommendations/" + id)
-    ]);
-
-    return { info, episodes, recommendations }
-});
+const { data: info } = await useFetch("/api/info?id=" + id);
+const { data: episodes } = await useFetch("/api/episodes?id=" + id);
 </script>
