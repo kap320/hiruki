@@ -10,9 +10,9 @@ export default {
             colors: {
                 "background": "#121212",
                 "sub": "#272727",
-                "extra": "#454545",
-                "primary": "#F7FFF6",
-                "secondary": "#0A8754"
+                "primary": "#FFFFFF",
+                "secondary": "#16A34A",
+                "error": "#DC2626"
             }
         },
     },

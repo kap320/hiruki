@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxtjs/google-fonts", "nuxt-icon"],
+    modules: ["@nuxtjs/tailwindcss", "@nuxt/image", "@nuxtjs/google-fonts", "nuxt-icon", "nuxt-disqus"],
     devtools: { enabled: false },
     tailwindcss: { viewer: false },
     googleFonts: {
@@ -7,6 +7,9 @@ export default defineNuxtConfig({
             Outfit: [400, 500, 600, 700],
             Poppins: [400, 500, 600, 700]
         }
+    },
+    disqus: {
+        shortname: "hiruki"
     },
     app: {
         head: {
