@@ -30,21 +30,23 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <div class="flex items-center gap-1">
-                        <p v-if="info.season" class="text-primary">{{ info.season === "WINTER" ? "Winter"
-                            : info.season === "SPRING" ? "Spring"
-                                : info.season === "SUMMER" ? "Summer"
-                                    : info.season === "FALL" ? "Fall"
-                                        : info.season }}</p>
+                        <p v-if="info.season" class="text-primary">
+                            {{ info.season === "WINTER" ? "Winter"
+                                : info.season === "SPRING" ? "Spring"
+                                    : info.season === "SUMMER" ? "Summer"
+                                        : info.season === "FALL" ? "Fall"
+                                            : info.season }}</p>
                         <p v-if="info.seasonYear" class="text-primary">{{ info.seasonYear }}</p>
                     </div>
                     <div class="flex flex-wrap items-center gap-1">
-                        <p class="text-primary bg-secondary rounded-sm px-2">{{ info.episodes ?
-                            info.episodes : "?" }} Episodes
+                        <p :class="`text-primary ${info.episodes ? 'bg-secondary' : 'bg-error'} rounded-sm px-2`">
+                            {{ info.episodes ? info.episodes : "?" }} Episodes
                         </p>
                         <p v-if="info.averageScore" class="text-primary bg-secondary rounded-sm px-2">{{
                             info.averageScore }}%</p>
                         <p class="text-primary bg-secondary rounded-sm px-2">{{ info.format }}</p>
-                        <p class="text-primary bg-secondary rounded-sm px-2">{{ info.status === "FINISHED" ? "Finished" :
+                        <p :class="`text-primary ${info.status === 'NOT_YET_RELEASED' ? 'bg-error' : 'bg-secondary'} 
+                        rounded-sm px-2`">{{ info.status === "FINISHED" ? "Finished" :
                             info.status === "RELEASING" ? "Releasing"
                                 : info.status === "NOT_YET_RELEASED" ? "Not Yet Released"
                                     : info.status === "CANCELLED" ? "Cancelled"
@@ -85,8 +87,7 @@
             </section>
             <section class="grid grid-cols-2 md:grid-cols-8 gap-2">
                 <NuxtLink :to="`/i/${item.id}`" class="w-full space-y-1" v-for="item in recommendations">
-                    <NuxtImg :src="item.coverImage.large" :alt="item.title.romaji" :title="item.title.romaji" 
-                    class="w-full h-44 ms:h-48 mm:h-60 ml:h-64 tb:h-32 lp:h-56 ll:h-60 4k:h-96 
+                    <NuxtImg :src="item.coverImage.large" :alt="item.title.romaji" :title="item.title.romaji" class="w-full h-44 ms:h-48 mm:h-60 ml:h-64 tb:h-32 lp:h-56 ll:h-60 4k:h-96 
                         object-cover rounded-sm hover:scale-95" />
                     <h6 class="text-primary text-sm truncate">{{ item.title.romaji }}</h6>
                     <div class="flex items-center gap-1">
