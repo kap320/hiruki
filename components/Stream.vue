@@ -1,5 +1,5 @@
 <template>
-    <section class="space-y-4">
+    <section class="space-y-8">
         <section class="flex flex-col">
             <h2 class="text-secondary text-2xl font-semibold">{{ stream.info.title }}</h2>
             <p class="text-primary">Episode {{ stream.info.episode }}</p>
@@ -12,23 +12,7 @@
                     Download Episode</NuxtLink>
             </div>
             <section class="space-y-4">
-                <section class="flex flex-col">
-                    <h2 class="text-secondary text-2xl font-semibold">{{ info.title.romaji }}</h2>
-                    <p class="text-primary">{{ info.title.native }}</p>
-                </section>
                 <section class="grid grid-cols-[auto,1fr] gap-4">
-                    <div class="hidden md:flex flex-col gap-2">
-                        <NuxtImg :src="info.coverImage.large" :alt="info.title.romaji" :title="info.title.romaji"
-                            class="w-full h-60 object-cover rounded-sm" />
-                        <div class="grid grid-cols-2 gap-2">
-                            <NuxtLink :to="`https://anilist.co/anime/${info.id}`" target="_blank" external
-                                class="text-primary bg-secondary text-center rounded-sm py-1 hover:bg-opacity-75">
-                                Anilist</NuxtLink>
-                            <NuxtLink :to="`https://myanimelist.net/anime/${info.idMal}`" target="_blank" external
-                                class="text-primary bg-secondary text-center rounded-sm py-1 hover:bg-opacity-75">
-                                Mal</NuxtLink>
-                        </div>
-                    </div>
                     <div class="flex flex-col gap-2">
                         <div class="flex items-center gap-1">
                             <p v-if="info.season" class="text-primary">{{ info.season === "WINTER" ? "Winter"
@@ -59,6 +43,16 @@
                             </div>
                         </div>
                         <div v-html="info.description" class="text-primary w-full h-48 overflow-y-auto pr-2" />
+                        <section class="space-y-4">
+                            <h2 class="text-secondary text-2xl font-semibold">Episodes</h2>
+                            <select class="text-primary bg-sub w-full rounded-sm py-2 px-1" v-model="selected"
+                                @change="getEpisode">
+                                <option value="" selected disabled>Select an episode</option>
+                                <option :value="episode.id" v-for="episode in episodes" :key="episode.number">
+                                    Episode {{ episode.number }}
+                                </option>
+                            </select>
+                        </section>
                     </div>
                 </section>
                 <section class="flex md:hidden justify-center items-center">
@@ -75,16 +69,6 @@
                 </section>
             </section>
         </section>
-        <section class="space-y-4">
-            <h2 class="text-secondary text-2xl font-semibold">Episodes</h2>
-            <div class="grid grid-cols-1 md:grid-cols-6 w-full overflow-y-auto gap-2 pr-2">
-                <NuxtLink :to="`/e/${id}/${episode.id}`" v-for="episode in episodes" :title="episode.title"
-                    class="bg-sub rounded-sm py-2 px-4">
-                    <h6 class="text-secondary text-base font-semibold">Episode {{ episode.number }}</h6>
-                    <p class="text-primary truncate">{{ episode.title }}</p>
-                </NuxtLink>
-            </div>
-        </section>
         <DisqusComments :identifier="`/episode/${episode}`" />
     </section>
 </template>
@@ -95,4 +79,12 @@ const { data: stream } = await useFetch("/api/stream?id=" + episode);
 const { data: info } = await useFetch("/api/info?id=" + id);
 const { data: download } = await useFetch("/api/download?id=" + episode);
 const { data: episodes } = await useFetch("/api/episodes?id=" + id);
+const selected = ref("");
+const router = useRouter();
+const getEpisode = (event) => {
+    const value = event.target.value
+    if (value) {
+        router.push(`/e/${id}/${value}`)
+    }
+}
 </script>

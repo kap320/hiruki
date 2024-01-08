@@ -1,6 +1,6 @@
 <template>
     <Header />
-    <section class="py-4 px-8">
+    <section class="px-4">
         <slot />
     </section>
     <Footer />

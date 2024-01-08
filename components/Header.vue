@@ -1,5 +1,5 @@
 <template>
-    <section class="flex justify-between items-center py-4 px-8">
+    <section class="flex justify-between items-center p-4">
         <NuxtLink to="/">
             <h1 class="text-secondary text-4xl font-bold">hiruki</h1>
         </NuxtLink>

@@ -85,18 +85,12 @@
             </section>
             <section class="grid grid-cols-2 md:grid-cols-8 gap-2">
                 <NuxtLink :to="`/i/${item.id}`" class="w-full space-y-1" v-for="item in recommendations">
-                    <NuxtImg :src="item.coverImage.large" :alt="item.title.romaji" :title="item.title.romaji"
-                        class="w-full h-44 md:h-56 object-cover rounded-sm hover:scale-95" />
+                    <NuxtImg :src="item.coverImage.large" :alt="item.title.romaji" :title="item.title.romaji" 
+                    class="w-full h-44 ms:h-48 mm:h-60 ml:h-64 tb:h-32 lp:h-56 ll:h-60 4k:h-96 
+                        object-cover rounded-sm hover:scale-95" />
                     <h6 class="text-primary text-sm truncate">{{ item.title.romaji }}</h6>
                     <div class="flex items-center gap-1">
                         <p class="text-primary bg-secondary text-sm rounded-sm px-1.5">{{ item.format }}</p>
-                        <p class="text-secondary bg-primary text-sm rounded-sm px-1.5">
-                            {{ item.status === "FINISHED" ? "Finished" :
-                                item.status === "RELEASING" ? "Releasing"
-                                    : item.status === "NOT_YET_RELEASED" ? "Not Yet Released"
-                                        : item.status === "CANCELLED" ? "Cancelled"
-                                            : item.status === "HIATUS" ? "Hiatsu"
-                                                : item.status }}</p>
                     </div>
                 </NuxtLink>
             </section>
