@@ -6,7 +6,7 @@
         </section>
         <section class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
             <div class="flex flex-col gap-2">
-                <iframe :src="stream.plyr.default" frameborder="0" class="w-full h-auto md:h-96 rounded-sm" />
+                <iframe :src="stream.plyr.default" allowfullscreen frameborder="0" class="w-full h-auto md:h-96 rounded-sm" />
                 <NuxtLink :to="download.link" target="_blank" external
                     class="text-primary bg-secondary text-center rounded-sm py-1 hover:bg-opacity-75">
                     Download Episode</NuxtLink>
