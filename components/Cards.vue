@@ -1,8 +1,8 @@
 <template>
     <section class="space-y-4">
         <section class="flex flex-col">
-            <h2 class="text-secondary text-xl font-semibold">All Time Popular</h2>
-            <p class="text-primary text-sm">Most Popular Anime</p>
+            <h2 class="text-secondary text-xl font-semibold">{{ title }}</h2>
+            <p class="text-primary text-sm">{{ description }}</p>
         </section>
         <section class="grid grid-cols-2 md:grid-cols-8 gap-2">
             <NuxtLink :to="`/i/${item.id}`" class="w-full space-y-1" v-for="item in data">
@@ -20,5 +20,5 @@
 </template>
 
 <script setup>
-const { data } = await useFetch("/api/popular");
+const { title, description, data } = defineProps(["title", "description", "data"]);
 </script>
