@@ -91,7 +91,7 @@ const router = useRouter();
 const getEpisode = (event) => {
     const value = event.target.value
     if (value) {
-        router.push(`/e/${id}/${value}`)
+        router.push(`/e/${id}/${value}`);
     }
 }
 </script>
