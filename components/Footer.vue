@@ -1,8 +1,8 @@
 <template>
     <section class="flex justify-between items-center p-4">
-        <p class="text-primary">©{{ currentYear }}. Hiruki</p>
+        <p class="text-primary">©{{ currentYear }}. Mentalz4k</p>
         <div class="flex items-center gap-2">
-            <NuxtLink to="https://github.com/Kenimarru/hiruki" target="_blank" external
+            <NuxtLink to="https://tiktok.com/mentalz4k" target="_blank" external
                 class="text-primary bg-secondary text-xl rounded-sm pb-1 px-1.5 hover:bg-opacity-75">
                 <Icon name="eva:github-fill" />
             </NuxtLink>
