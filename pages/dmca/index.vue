@@ -2,12 +2,12 @@
     <section class="space-y-4">
         <section class="flex flex-col gap-2">
             <h2 class="text-primary text-3xl font-semibold">Disclaimer</h2>
-            <p class="text-primary text-opacity-75">None of the files listed on hiruki.xyz are hosted on our servers. All
-                links point to content hosted on third-party websites. hiruki.xyz does not accept responsibility for content
+            <p class="text-primary text-opacity-75">None of the files listed on animementalz.vercel.app are hosted on our servers. All
+                links point to content hosted on third-party websites. animementalz.vercel.app does not accept responsibility for content
                 hosted on third-party websites and has no involvement in the downloading/uploading of movies. We only post
                 links that are available on the internet. If you believe that any content on our website infringes upon your
                 intellectual property rights and you hold the copyright for that content, please report it to
-                kenimaru@skiff.com and the content will be immediately removed.</p>
+                shana@skiff.com and the content will be immediately removed.</p>
         </section>
         <section class="flex flex-col gap-2">
             <h2 class="text-primary text-3xl font-semibold">DMCA</h2>
